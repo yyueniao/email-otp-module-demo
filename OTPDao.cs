@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmailOTPModule
 {
-    public class OTPDao
+    public class OTPDao:IOTPDao
     {
         // Should be store in database. To make it easier, I implement by `Dictionary`
         private Dictionary<string, string> emailToOtp = new();

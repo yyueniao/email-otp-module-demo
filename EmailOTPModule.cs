@@ -17,12 +17,12 @@ namespace EmailOTPModule
         public const string STATUS_OTP_FAIL = "OTP_FAIL";
         public const string STATUS_OTP_TIMEOUT = "OTP_TIMEOUT";
 
-        private readonly EmailService emailService;
-        private readonly OTPDao otpDao;
+        private readonly IEmailService emailService;
+        private readonly IOTPDao otpDao;
         private static readonly Random random = new();
         private string userEmail = "";
 
-        public EmailOTPModule(EmailService emailService, OTPDao otpDao)
+        public EmailOTPModule(IEmailService emailService, IOTPDao otpDao)
         {
             this.emailService = emailService;
             this.otpDao = otpDao;
