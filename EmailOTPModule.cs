@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmailOTPModule
 {
-    internal class EmailOTPModule
+    public class EmailOTPModule
     {
         public const string STATUS_EMAIL_OK = "EMAIL_OK";
         public const string STATUS_EMAIL_FAIL = "EMAIL_FAIL";

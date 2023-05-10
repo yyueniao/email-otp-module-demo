@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmailOTPModule
 {
-    internal class EmailService
+    public class EmailService
     {
         public void SendEmail(string emailAddress, string emailBody)
         {

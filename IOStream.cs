@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmailOTPModule
 {
-    internal interface IOStream
+    public interface IOStream
     {
         public string ReadOTP();
     }
