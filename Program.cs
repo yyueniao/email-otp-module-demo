@@ -7,7 +7,7 @@
             Console.WriteLine("Enter your email address: ");
             string emailAddress = Console.ReadLine() ?? "";
 
-            EmailOTPModule module = new();
+            EmailOTPModule module = new(new EmailService(), new OTPDao());
 
             string status = module.GenerateOTPEmail(emailAddress);
             if (status == EmailOTPModule.STATUS_EMAIL_INVALID)

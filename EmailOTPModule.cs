@@ -17,9 +17,16 @@ namespace EmailOTPModule
         public const string STATUS_OTP_FAIL = "OTP_FAIL";
         public const string STATUS_OTP_TIMEOUT = "OTP_TIMEOUT";
 
-        private OTPDao otpDao = new OTPDao();
-        private static Random random = new Random();
-        private string userEmail = null;
+        private readonly EmailService emailService;
+        private readonly OTPDao otpDao;
+        private static readonly Random random = new();
+        private string userEmail = "";
+
+        public EmailOTPModule(EmailService emailService, OTPDao otpDao)
+        {
+            this.emailService = emailService;
+            this.otpDao = otpDao;
+        }
 
         private string GenerateOTP()
         {
@@ -40,12 +47,6 @@ namespace EmailOTPModule
             }
         }
 
-        private void SendEmail(string emailAddress, string emailBody)
-        {
-            // assume this has been implemented
-            Console.WriteLine("Email sent to " + emailAddress + ": " + emailBody);
-        }
-
         public string GenerateOTPEmail(string emailAddress)
         {
             if (!IsValidEmail(emailAddress))
@@ -58,7 +59,7 @@ namespace EmailOTPModule
             try
             {
                 otpDao.CreateOTP(emailAddress, otp);
-                SendEmail(emailAddress, emailBody);
+                emailService.SendEmail(emailAddress, emailBody);
                 userEmail = emailAddress;
                 return STATUS_EMAIL_OK;
             }
